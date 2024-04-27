@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">LoginCompose</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="greetings_title">Greetings screen</string>
+    <string name="weather_title">Weather</string>
+    <string name="sign_in_action">Sign in</string>
+    <string name="item_login">Login</string>
+    <string name="item_password">Password</string>
+    <string name="sign_up_action">Sign up</string>
+    <string name="item_confirm_password">Confirm password</string>
+    <string name="authentication">Authentication</string>
+    <string name="registration">Registration</string>
+</resources>
