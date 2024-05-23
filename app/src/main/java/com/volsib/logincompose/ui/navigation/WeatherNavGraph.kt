@@ -7,8 +7,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.volsib.logincompose.ui.greetings.GreetingsDestination
 import com.volsib.logincompose.ui.greetings.GreetingsScreen
-import com.volsib.logincompose.ui.weather.WeatherScreen
 import com.volsib.logincompose.ui.weather.WeatherDestination
+import com.volsib.logincompose.ui.weather.WeatherScreen
 
 @Composable
 fun WeatherNavHost(
@@ -24,7 +24,9 @@ fun WeatherNavHost(
             )
         }
         composable(route = WeatherDestination.route) {
-            WeatherScreen()
+            WeatherScreen(
+                navigateToGreetings = {navController.navigate(GreetingsDestination.route)}
+            )
         }
     }
 }

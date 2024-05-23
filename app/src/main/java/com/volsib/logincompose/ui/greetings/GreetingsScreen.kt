@@ -20,6 +20,7 @@ import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,11 +32,13 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.glance.appwidget.updateAll
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.volsib.logincompose.AppViewModelProvider
 import com.volsib.logincompose.R
 import com.volsib.logincompose.ui.navigation.NavigationDestination
 import com.volsib.logincompose.ui.theme.LoginComposeTheme
+import com.volsib.logincompose.ui.widget.WeatherWidget
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -55,6 +58,14 @@ fun GreetingsScreen(
     val pagerState = rememberPagerState { pagesCount }
 
     val coroutineScope = rememberCoroutineScope()
+
+    // Проверяем наличие пользователя в репозитории
+    LaunchedEffect(key1 = Unit) {
+        if (viewModel.hasCurrentUser()) {
+            // Если пользователь существует, переходим на WeatherScreen
+            navigateToWeather()
+        }
+    }
 
     Column(
         modifier = Modifier
@@ -124,6 +135,10 @@ fun SignInPage(
                 val statusMessage = viewModel.authorizeUser()
                 Toast.makeText(context, statusMessage, Toast.LENGTH_SHORT).show()
                 if (statusMessage == "Authorization successful") {
+                    // Updating the app widget
+                    WeatherWidget().updateAll(context)
+
+                    // Navigating to the weather screen
                     navigateToWeather()
                 }
             }

@@ -56,6 +56,11 @@ class GreetingsViewModel(private val userRepository: UserRepository) : ViewModel
         }
     }
 
+    suspend fun hasCurrentUser(): Boolean {
+        val currentUser = userRepository.getCurrentUserStream().firstOrNull()
+        return currentUser != null
+    }
+
     suspend fun authorizeUser(): String {
         return if (validateInput()) {
             val currentUser = userUiState.userDetails.toUser()
@@ -64,6 +69,8 @@ class GreetingsViewModel(private val userRepository: UserRepository) : ViewModel
             val existingUser = existingUserStream.firstOrNull()
 
             if (existingUser != null && currentUser.password == existingUser.password) {
+                existingUser.isSignedIn = true
+                userRepository.updateUser(existingUser)
                 "Authorization successful"
             } else {
                 "Invalid login or password"
@@ -72,7 +79,6 @@ class GreetingsViewModel(private val userRepository: UserRepository) : ViewModel
             "The login and password should not be empty"
         }
     }
-
 
     private fun validateInput(
         entryType: EntryType = pageUiState.entryType,

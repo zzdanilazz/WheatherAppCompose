@@ -67,6 +67,10 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.core.ktx)
     ksp(libs.androidx.room.compiler)
+    implementation(libs.play.services.location)
+    implementation(libs.androidx.glance.appwidget)
+    implementation(libs.androidx.work.runtime.ktx)
+
 
     implementation(libs.androidx.navigation.compose)
     testImplementation(libs.junit)
@@ -76,4 +80,13 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Retrofit + okHttp
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
+
+    // Glide
+    implementation(libs.compose)
 }

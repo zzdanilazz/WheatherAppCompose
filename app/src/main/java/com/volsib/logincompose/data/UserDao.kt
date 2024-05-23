@@ -27,4 +27,7 @@ interface UserDao {
 
     @Query("SELECT * from users ORDER BY login ASC")
     fun getAllUsers(): Flow<List<User>>
+
+    @Query("SELECT * from users WHERE is_signed_in = 1")
+    fun getCurrentUser(): Flow<User?>
 }

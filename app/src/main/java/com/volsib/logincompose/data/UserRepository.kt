@@ -12,6 +12,8 @@ interface UserRepository {
 
     fun getUserByLoginStream(login: String): Flow<User?>
 
+    fun getCurrentUserStream(): Flow<User?>
+
     /**
      * Insert item in the data source
      */

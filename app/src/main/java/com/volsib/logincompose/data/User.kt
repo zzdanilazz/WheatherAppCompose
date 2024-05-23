@@ -9,5 +9,6 @@ import androidx.room.PrimaryKey
 data class User(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     @ColumnInfo(name = "login") var login: String,
-    @ColumnInfo(name = "password") var password: String
+    @ColumnInfo(name = "password") var password: String,
+    @ColumnInfo(name = "is_signed_in") var isSignedIn: Boolean = false
 )

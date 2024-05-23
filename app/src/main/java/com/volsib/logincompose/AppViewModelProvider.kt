@@ -6,21 +6,23 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.volsib.logincompose.ui.greetings.GreetingsViewModel
+import com.volsib.logincompose.ui.weather.WeatherViewModel
 
 /**
  * Provides Factory to create instance of ViewModel for the entire Inventory app
  */
 object AppViewModelProvider {
     val Factory = viewModelFactory {
-        // Initializer for GreetingsViewModel
         initializer {
             GreetingsViewModel(weatherApplication().container.userRepository)
         }
 
-//        // Initializer for HomeViewModel
-//        initializer {
-//            HomeViewModel()
-//        }
+        initializer {
+            WeatherViewModel(
+                weatherApplication().container.weatherRepository,
+                weatherApplication().container.userRepository
+            )
+        }
     }
 }
 

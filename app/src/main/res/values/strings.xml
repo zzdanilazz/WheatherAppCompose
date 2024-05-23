@@ -10,4 +10,9 @@
     <string name="item_confirm_password">Confirm password</string>
     <string name="authentication">Authentication</string>
     <string name="registration">Registration</string>
+    <string name="update_weather_by_current_place">Update weather by the current position</string>
+    <string name="weather_icon">Weather icon</string>
+    <string name="enter_city">Enter the city</string>
+    <string name="update_weather_by_city">Update weather by the enterd city</string>
+    <string name="exit">Exit</string>
 </resources>
